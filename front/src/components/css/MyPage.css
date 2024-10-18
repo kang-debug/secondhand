@@ -1,0 +1,71 @@
+.mypage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: rgba(57, 180, 202, 0.51);
+    background: linear-gradient(rgba(89, 188, 98, 0.51), rgb(255, 255, 255));
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.mypage-content {
+    margin-top: 2em;
+    padding: 2em;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #3ea8ba;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mypage-content h1 {
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    color: #333;
+}
+
+/* 테이블 스타일 */
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+.profile-table th, .profile-table td {
+    padding: 0.8em;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.profile-table th {
+    width: 35%;
+    color: #333;
+    font-weight: bold;
+}
+
+.charge-button {
+    padding: 0.8em 2em;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #3ea8ba;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.charge-button:hover {
+    background-color: #3399a3;
+}
+
+.loading {
+    font-size: 1.5em;
+    color: #777;
+    text-align: center;
+    margin-top: 2em;
+}

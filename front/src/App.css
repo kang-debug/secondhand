@@ -1,0 +1,52 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background: linear-gradient(rgba(89, 188, 98, 0.51), rgb(255, 255, 255));
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+.App button{
+    cursor: pointer;
+}
+
+.footer {
+  border: 1px solid #3ea8ba;
+  height: 10%;
+  width: 80%;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  /* 반응형에서 크기 조정 대신 스크롤을 사용 */
+  .App {
+    overflow: auto; /* 부모 요소에 스크롤 추가 */
+  }
+
+  /* 기존 요소 크기는 고정, 반응형 디자인 제거 */
+  .header {
+    width: 80%;
+  }
+
+  .search-container {
+    flex-direction: row;
+    align-items: center;
+    padding: 1%;
+  }
+
+  .markImg {
+    height: 15em;
+    margin-right: 7em;
+  }
+
+  .searchInput {
+    width: 50em;
+    height: 3em;
+    font-size: 1em;
+  }
+
+  .body, .footer {
+    width: 80%;
+  }
+}

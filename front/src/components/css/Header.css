@@ -1,0 +1,180 @@
+/* src/components/css/Header.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+
+/* 전체 헤더 */
+.header {
+    margin-top: 2%;
+    height: 20%;
+    width: 80%;
+    position: relative;
+    z-index: 1; /* 배경 앞에 오도록 설정 */
+}
+.sign {
+    position: absolute;
+    right: 15%;
+}
+.signBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+.signBtn:hover {
+    color: #3ea8ba; /* 파란색 텍스트 색상 */
+    transform: scale(1.1); /* 버튼을 1.1배로 확대 */
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* 모달 컨텐츠 */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+/* 모달 닫기 버튼 */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* 로그인 및 회원가입 폼 스타일 */
+.auth-container {
+    display: flex;
+    position: absolute;
+    top: -10%;
+    right: 15%;
+}
+
+.signBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    margin-left: 1em;
+}
+.signBtn:hover {
+    color: #3ea8ba;
+    transform: scale(1.1);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+/* 검색창 및 마크 배치 */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.markImg {
+    height: 10vw;
+    max-height: 15em;
+    margin-right: 5vw;
+}
+
+/* 검색창 스타일 */
+.input-search {
+    display: flex;
+    align-items: center;
+    border: 0.2em solid #2c2828;
+    width: 50vw;
+    max-width: 50em;
+    height: 4em;
+    position: relative;
+    padding-right: 3em;
+    z-index: 2; /* 배경 앞에 오도록 설정 */
+}
+
+.searchInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding-left: 0.5em;
+    font-size: 1.3em;
+    box-sizing: border-box;
+}
+
+.searchBtn {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    height: 70%;
+}
+
+/* 아이콘 버튼 스타일 */
+.icon-with-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1.5em;
+}
+
+.icon {
+    fill: #000; /* 검은색 아이콘 */
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.icon-text {
+    font-weight: bolder;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    margin-left: 2em;
+    color: #000;
+}
+/* 아이콘 버튼 */
+.icon-button {
+    margin-left: 1.5em;
+    padding: 0.5em;
+    font-size: 2em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+.icon-button:hover {
+    color: #3ea8ba;
+    transform: scale(1.5);
+}

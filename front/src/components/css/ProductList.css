@@ -1,0 +1,48 @@
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 15%));
+    gap: 16px;
+    width: 80%;
+    margin: auto;
+}
+
+.product-card {
+    border: 1px solid #3ea8ba;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: 250px; /* 전체 카드의 최대 높이 */
+    overflow: hidden;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    max-height: 120px; /* 이미지의 최대 높이 */
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.product-name {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+    margin: 8px 0;
+}
+
+.product-price {
+    font-size: 0.8em;
+    color: #555;
+}
+
+.product-uploader {
+    font-size: 0.75em;
+    color: #888;
+    margin-top: 4px;
+}
