@@ -62,7 +62,6 @@ textarea {
     background-color: #3399a3;
 }
 
-/* 이미지 미리보기 스타일 */
 .image-preview {
     display: flex;
     flex-wrap: wrap;

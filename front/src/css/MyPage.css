@@ -69,3 +69,27 @@
     text-align: center;
     margin-top: 2em;
 }
+.mypage-content {
+    margin-bottom: 20px;
+}
+
+.bid-history {
+    margin-top: 20px;
+}
+
+.bid-history-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.bid-history-table th, .bid-history-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.bid-history-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}

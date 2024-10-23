@@ -1,0 +1,67 @@
+.myshop-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(57, 180, 202, 0.51);
+    background: linear-gradient(rgba(89, 188, 98, 0.51), rgb(255, 255, 255));
+    overflow: auto;
+}
+
+.myshop-product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 15%));
+    gap: 16px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.myshop-product-card {
+    border: 1px solid #3ea8ba;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: 300px;
+    overflow: hidden;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin: 8px 0;
+}
+
+.myshop-product-image {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.myshop-product-details {
+    width: 100%;
+    text-align: left;
+}
+
+.myshop-product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.myshop-product-table td {
+    padding: 4px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.myshop-product-table .detail-label {
+    font-weight: bold;
+    color: #333;
+}
