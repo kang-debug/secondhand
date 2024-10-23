@@ -24,6 +24,10 @@ public class Product {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    @ManyToOne
+    @JoinColumn(name = "highest_bidder_id")
+    private Member highestBidder; // 최고 입찰자 정보
+
     @Column(name = "image_url")
     private String imageUrl;
 

@@ -19,12 +19,10 @@
 }
 
 @media (max-width: 768px) {
-  /* 반응형에서 크기 조정 대신 스크롤을 사용 */
   .App {
-    overflow: auto; /* 부모 요소에 스크롤 추가 */
+    overflow: auto;
   }
 
-  /* 기존 요소 크기는 고정, 반응형 디자인 제거 */
   .header {
     width: 80%;
   }

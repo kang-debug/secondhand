@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from '../api/axios';
+import axios from '../api/axios.jsx';
 import { useDispatch } from 'react-redux';
-import { login } from '../features/user/userSlice';
-import './css/LoginModal.css';
+import { login } from '../features/user/userSlice.jsx';
+import '../css/LoginModal.css';
 
 function LoginModal({ isSignUpMode, setIsSignUpMode, closeModal }) {
     const [email, setEmail] = useState('');
@@ -57,7 +57,7 @@ function LoginModal({ isSignUpMode, setIsSignUpMode, closeModal }) {
         }
     };
 
-    // Enter 키 감지 함수
+
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             if (isSignUpMode) {

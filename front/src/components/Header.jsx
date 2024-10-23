@@ -1,11 +1,10 @@
-// src/components/Header.jsx
-import './css/Header.css';
+import '../css/Header.css';
 import Mark from '../assets/secondhand.svg';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/user/userSlice";
-import LoginModal from "./LoginModal";
+import LoginModal from "../Modal/LoginModal.jsx";
 
 export default () => {
     const navigate = useNavigate();
@@ -102,7 +101,6 @@ export default () => {
                 </div>
             </div>
 
-            {/* 로그인 모달 */}
             {isModalOpen && (
                 <LoginModal
                     isSignUpMode={isSignUpMode}

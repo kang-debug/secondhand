@@ -43,7 +43,7 @@ public class GCSService {
         storage.create(blobInfo, file.getBytes());
 
         String fileUrl = String.format("https://storage.googleapis.com/%s/%s", bucketName, fileName);
-        logger.info("Uploaded file URL: " + fileUrl); // URL을 로그로 출력
+        logger.info("Uploaded file URL: " + fileUrl);
 
         return fileUrl;
     }

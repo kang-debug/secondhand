@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios';
-import './css/Upload.css';
+import '../css/Upload.css';
 import Header from "./Header.jsx";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,13 +27,11 @@ const Upload = () => {
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
 
-        // 기존 이미지와 새로운 이미지를 합쳐서 최대 5개까지 업로드 가능하게 설정
         if (productImages.length + files.length > 5) {
             alert("최대 5개의 이미지만 업로드할 수 있습니다.");
             return;
         }
 
-        // 새로운 이미지를 기존 이미지 배열에 추가
         setProductImages((prevImages) => [...prevImages, ...files]);
     };
 
@@ -62,7 +60,6 @@ const Upload = () => {
         formData.append('description', description);
         formData.append('startingPrice', startPrice);
 
-        // 모든 이미지를 'images' 필드에 추가
         productImages.forEach((image) => {
             formData.append('images', image);
         });

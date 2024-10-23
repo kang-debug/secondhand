@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store"; // 경로 수정
 
 createRoot(document.getElementById('root')).render(
+
     <StrictMode>
         <Provider store={store}>
             <App />

@@ -9,6 +9,9 @@ import Upload from "./components/Upload.jsx";
 import MyShop from "./components/MyShop.jsx";
 import ProductList from "./components/ProductList.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
+import WebSocketProvider from "./components/WebSocketProvider.jsx";
+
+
 
 function App() {
     const dispatch = useDispatch();
@@ -20,15 +23,10 @@ function App() {
         }
     }, [dispatch]);
 
-
-
     return (
         <div className="App">
             <Header />
             <ProductList/>
-            <div className="footer">
-                {/* 하단 내용 */}
-            </div>
         </div>
     );
 }
@@ -36,6 +34,7 @@ function App() {
 function AppWrapper() {
     return (
         <Router>
+            <WebSocketProvider />
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/mypage" element={<MyPage />} />
