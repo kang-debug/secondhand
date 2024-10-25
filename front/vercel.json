@@ -1,0 +1,8 @@
+{
+    "build": {
+      "command": "npm run build"
+    },
+    "engines": {
+      "node": "16.x"
+    }
+  }
