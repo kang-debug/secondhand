@@ -6,8 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
-application.properties
-second-hand-438904-3ae9af9c6eda.json
+
 
 # Firebase cache
 .firebase/
@@ -69,3 +68,9 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# GCS credentials file
+back/second-hand-438904-3ae9af9c6eda.json
+
+# Spring Boot application properties
+back/src/main/resources/application.properties
