@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
+application.properties
+second-hand-438904-3ae9af9c6eda.json
 
 # Firebase cache
 .firebase/

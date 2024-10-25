@@ -53,7 +53,7 @@ public class ProductService {
         product.setDescription(description);
         product.setStartingPrice(startingPrice);
         product.setCurrentPrice(startingPrice);
-        product.setAuctionEndTime(LocalDateTime.now().plusDays(1));
+        product.setAuctionEndTime(LocalDateTime.now().plusMinutes(1));
 
         List<String> imageUrls = new ArrayList<>();
         for (MultipartFile image : images) {
