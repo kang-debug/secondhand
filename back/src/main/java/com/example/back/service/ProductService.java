@@ -130,11 +130,9 @@ public class ProductService {
         }
 
 
-        // 관련된 BidHistory 삭제
         List<BidHistory> bidHistories = bidHistoryRepository.findByProduct_ProductId(productId);
         bidHistoryRepository.deleteAll(bidHistories);
 
-        // Product 삭제
         productRepository.delete(product);
     }
 

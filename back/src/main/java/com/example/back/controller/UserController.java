@@ -23,24 +23,28 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //회원가입
     @PostMapping("/register")
     public ResponseEntity<UserDto> registerUser(@RequestBody RegisterRequest registerRequest) {
         UserDto createdUser = userService.registerUser(registerRequest.getEmail(), registerRequest.getNickname(), registerRequest.getPassword());
         return ResponseEntity.ok(createdUser);
     }
 
+    //로그인
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
         String token = userService.authenticateUser(loginRequest.getEmail(), loginRequest.getPassword());
         return ResponseEntity.ok(Map.of("token", token));
     }
 
+    //내 정보 조회
     @GetMapping("/me")
     public ResponseEntity<UserDto> getCurrentUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         UserDto userDto = userService.getUserProfile(userPrincipal.getId());
         return ResponseEntity.ok(userDto);
     }
 
+    //잔고 충전
     @PostMapping("/charge")
     public ResponseEntity<String> chargeBalance(@RequestBody ChargeRequest chargeRequest, Principal principal) {
         try {

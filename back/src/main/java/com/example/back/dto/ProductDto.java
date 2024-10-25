@@ -10,7 +10,7 @@ public class ProductDto {
     private Long productId;
     private String name;
     private Long currentPrice;
-    private String imageUrl; // 첫 번째 이미지 URL
+    private String imageUrl;
     private String uploadedBy;
     private String auctionEndTime;
     private String highestBidder;

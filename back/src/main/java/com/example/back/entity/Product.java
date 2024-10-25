@@ -26,7 +26,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "highest_bidder_id")
-    private Member highestBidder; // 최고 입찰자 정보
+    private Member highestBidder;
 
     @Column(name = "image_url")
     private String imageUrl;
@@ -41,10 +41,10 @@ public class Product {
     private String description;
 
     @Column(nullable = false)
-    private Long startingPrice; // 경매 시작 가격
+    private Long startingPrice;
 
     @Column(nullable = false)
-    private Long currentPrice; // 현재 입찰 가격
+    private Long currentPrice;
 
     @Column(nullable = false)
     private LocalDateTime registrationDate = LocalDateTime.now();

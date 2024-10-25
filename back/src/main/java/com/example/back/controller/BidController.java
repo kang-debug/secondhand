@@ -25,10 +25,8 @@ public class BidController {
             @RequestParam Long bidAmount) {
         Bid bid = bidService.placeBid(productId, memberId, bidAmount);
 
-        // 입찰이 성공하면 모든 사용자에게 알림을 보냄
         messagingTemplate.convertAndSend("/topic/bid-updates", bid);
 
-        // 입찰했던 사용자들에게는 알림 메시지를 보냄
         messagingTemplate.convertAndSend("/topic/bid-history/" + productId, "입찰가가 갱신되었습니다.");
 
         return bid;

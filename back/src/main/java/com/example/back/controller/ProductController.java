@@ -66,12 +66,14 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
+    //세부 상품 조회
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable("id") Long productId) {
         Product product = productService.getProductById(productId);
         return ResponseEntity.ok(product);
     }
 
+    //멤버 조회
     @GetMapping("/member/{memberId}")
     public ResponseEntity<List<ProductDto>> getProductsByMemberId(@PathVariable("memberId") Long memberId) {
         List<ProductDto> products = productService.getProductsByMember(memberId);

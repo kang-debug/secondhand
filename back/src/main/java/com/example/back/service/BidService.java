@@ -31,16 +31,13 @@ public class BidService {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid member ID"));
 
-        // 현재 입찰 금액이 최고 입찰 금액보다 큰지 확인
         if (bidAmount <= product.getCurrentPrice()) {
             throw new IllegalArgumentException("Bid amount must be higher than the current price.");
         }
 
-        //  입찰 금액 업데이트
         product.setCurrentPrice(bidAmount);
         productRepository.save(product);
 
-        // 입찰 기록 저장
         Bid bid = new Bid();
         bid.setProduct(product);
         bid.setMember(member);
