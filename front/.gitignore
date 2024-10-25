@@ -70,7 +70,7 @@ node_modules/
 .dataconnect
 
 # GCS credentials file
-back/second-hand-438904-3ae9af9c6eda.json
+back\second-hand-438904-3ae9af9c6eda.json
 
 # Spring Boot application properties
-back/src/main/resources/application.properties
+back\src\main\resources\application.properties
