@@ -73,4 +73,5 @@ public class UserService {
         member.setPoints(member.getPoints() + amount);
         memberRepository.save(member);
     }
+
 }

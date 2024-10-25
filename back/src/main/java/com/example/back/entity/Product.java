@@ -52,5 +52,21 @@ public class Product {
     @Column(nullable = false)
     private LocalDateTime auctionEndTime;
 
+    @Column(nullable = false)
+    private boolean purchaseConfirmed = false;
 
+    @Column
+    private String postalCode;
+
+    @Column
+    private String address;
+
+    @Column
+    private String detailAddress;
+
+    @Column
+    private LocalDateTime lastBidTime;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<BidHistory> bidHistories;
 }

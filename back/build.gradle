@@ -47,7 +47,11 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-parameters"
 }
-
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.json'
+    }
+}
 
 
 

@@ -31,7 +31,8 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/users/login", "/api/users/register", "/ws/**", "/api/products/**").permitAll()
+                        .requestMatchers("/api/users/login", "/api/users/register", "/api/products/**", "/ws/**").permitAll() // WebSocket 경로 허용
+                        .requestMatchers("/api/products/*/confirm-address", "/api/products/*/address").authenticated()
                         .anyRequest().authenticated()
                 )
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))

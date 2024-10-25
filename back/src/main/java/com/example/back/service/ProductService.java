@@ -16,6 +16,7 @@ import com.google.cloud.storage.BlobInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -42,24 +43,6 @@ public class ProductService {
     private BidHistoryRepository bidHistoryRepository;
 
 
-    @Value("${gcs.bucket.name}")
-    private String bucketName;
-
-    private final Storage storage = StorageOptions.getDefaultInstance().getService();
-
-
-    public String uploadToGCS(MultipartFile file) throws IOException {
-        String fileName = UUID.randomUUID().toString() + "-" + file.getOriginalFilename();
-
-        BlobId blobId = BlobId.of(bucketName, fileName);
-        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType(file.getContentType()).build();
-
-        storage.create(blobInfo, file.getBytes());
-
-        return String.format("https://storage.googleapis.com/%s/%s", bucketName, fileName);
-    }
-
-
     public void createProduct(Long memberId, String name, String description, Long startingPrice, List<MultipartFile> images) throws IOException {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
@@ -70,7 +53,7 @@ public class ProductService {
         product.setDescription(description);
         product.setStartingPrice(startingPrice);
         product.setCurrentPrice(startingPrice);
-        product.setAuctionEndTime(LocalDateTime.now().plusMinutes(60));
+        product.setAuctionEndTime(LocalDateTime.now().plusDays(1));
 
         List<String> imageUrls = new ArrayList<>();
         for (MultipartFile image : images) {
@@ -94,7 +77,7 @@ public class ProductService {
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
     }
 
-    public void updateCurrentPrice(Long productId, Long newBidPrice, Long bidderId) {
+    public List<Long> updateCurrentPrice(Long productId, Long newBidPrice, Long bidderId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
 
@@ -112,6 +95,12 @@ public class ProductService {
             bidHistoryRepository.save(bidHistory);
 
             productRepository.save(product);
+
+            return bidHistoryRepository.findByProduct_ProductId(productId)
+                    .stream()
+                    .map(bid -> bid.getMember().getMemberId())
+                    .distinct()
+                    .collect(Collectors.toList());
         } else {
             throw new IllegalArgumentException("새로운 입찰가는 현재 입찰가보다 높아야 합니다.");
         }
@@ -131,6 +120,7 @@ public class ProductService {
         }).collect(Collectors.toList());
     }
 
+    @Transactional
     public void deleteProduct(Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
@@ -139,10 +129,35 @@ public class ProductService {
             throw new IllegalArgumentException("경매가 종료되지 않았습니다. 경매 종료 후에만 상품을 삭제할 수 있습니다.");
         }
 
-        if (product.getHighestBidder() != null) {
-            throw new IllegalArgumentException("입찰자가 있는 경우 상품을 삭제할 수 없습니다.");
-        }
 
+        // 관련된 BidHistory 삭제
+        List<BidHistory> bidHistories = bidHistoryRepository.findByProduct_ProductId(productId);
+        bidHistoryRepository.deleteAll(bidHistories);
+
+        // Product 삭제
         productRepository.delete(product);
     }
+
+    @Transactional
+    public void confirmPurchase(Long productId, Long bidderId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
+
+        if (product.isPurchaseConfirmed()) {
+            throw new IllegalArgumentException("이미 구매가 확정된 상품입니다.");
+        }
+
+        Member highestBidder = memberRepository.findById(bidderId)
+                .orElseThrow(() -> new IllegalArgumentException("회원 정보를 찾을 수 없습니다."));
+
+        if (highestBidder.getPoints() < product.getCurrentPrice()) {
+            throw new IllegalArgumentException("잔고가 부족합니다.");
+        }
+
+        highestBidder.setPoints(highestBidder.getPoints() - product.getCurrentPrice());
+        product.setPurchaseConfirmed(true);
+        productRepository.save(product);
+        memberRepository.save(highestBidder);
+    }
+
 }

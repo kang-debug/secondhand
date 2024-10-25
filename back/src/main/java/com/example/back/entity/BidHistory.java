@@ -32,5 +32,6 @@ public class BidHistory {
 
     @Column(nullable = false)
     private LocalDateTime bidTime = LocalDateTime.now();
+
 }
 

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface BidHistoryRepository extends JpaRepository<BidHistory, Long> {
     List<BidHistory> findByMember_MemberId(Long memberId);
+    List<BidHistory> findByProduct_ProductId(Long productId);
 
 }
